@@ -29,7 +29,7 @@ public class AdminRestaurantController {
            return new ResponseEntity<>(restaurant, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Restaurant> updateRestaurant(
             @RequestBody CreateRestaurantRequest req,
             @RequestHeader ("Authorization") String jwt,

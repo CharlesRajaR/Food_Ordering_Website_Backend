@@ -17,7 +17,7 @@ import java.util.List;
 public class IngredientController {
     @Autowired
     private IngredientsService ingredientsService;
-    @PostMapping("category")
+    @PostMapping("/category")
     public ResponseEntity<IngredientsCategory> createIngredientCategory(@RequestBody IngredientCategoryRequest req)throws Exception{
         IngredientsCategory category = ingredientsService.createIngredientCategory(req.getName(), req.getRestaurantId());
         return new ResponseEntity<>(category, HttpStatus.CREATED);

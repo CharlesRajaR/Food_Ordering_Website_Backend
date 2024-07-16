@@ -19,7 +19,7 @@ public class CartController {
     private CartService cartService;
     @Autowired
     private UserService userService;
-    @PutMapping("/cart/add")
+    @PostMapping("/cart/add")
     public ResponseEntity<CartItems> addItemToCart(@RequestBody AddCartItemRequest req,
                                                    @RequestHeader("Authorization") String jwt)throws Exception{
         CartItems cartItem = cartService.addItemToCart(req, jwt);

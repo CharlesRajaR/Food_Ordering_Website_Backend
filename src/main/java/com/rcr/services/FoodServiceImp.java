@@ -1,5 +1,6 @@
 package com.rcr.services;
 
+import java.util.Date;
 import com.rcr.model.Category;
 import com.rcr.model.Food;
 import com.rcr.model.Restaurant;
@@ -28,7 +29,7 @@ public class FoodServiceImp implements FoodService{
         food.setIngredients(req.getIngredients());
         food.setSeasonal(req.isSeasonal());
         food.setVegetarian(req.isVegetarian());
-
+        food.setCreationDate(new Date());
         Food savedFood = foodRepository.save(food);
         restaurant.getFoods().add(savedFood);
 
