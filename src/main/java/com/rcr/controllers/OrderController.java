@@ -3,7 +3,10 @@ package com.rcr.controllers;
 import com.rcr.model.Order;
 import com.rcr.model.User;
 import com.rcr.request.OrderRequest;
+import com.rcr.response.PaymentResponse;
 import com.rcr.services.OrderService;
+import com.rcr.services.PaymentService;
+import com.rcr.services.PaymentServiceImpl;
 import com.rcr.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +22,18 @@ public class OrderController {
     private OrderService orderService;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PaymentService paymentService;
     @PostMapping("/order")
-    public ResponseEntity<Order> createOrder(@RequestHeader("Authorization") String jwt,
-                                             @RequestBody OrderRequest req)throws Exception{
+    public ResponseEntity<PaymentResponse> createOrder(@RequestHeader("Authorization") String jwt,
+                                                       @RequestBody OrderRequest req)throws Exception{
         User user = userService.findUserByJwToken(jwt);
         Order order = orderService.createOrder(req, user);
+        PaymentResponse response = paymentService.createPaymentLink(order);
 
-        return new ResponseEntity<>(order, HttpStatus.CREATED);
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/order/user")
