@@ -24,6 +24,8 @@ public class OrderServiceImp implements OrderService{
     @Autowired
     private AddressRepository addressRepository;
     @Autowired
+    private AddressService addressService;
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private RestaurantService restaurantService;
@@ -41,8 +43,11 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public Order createOrder(OrderRequest orderReq, User user) throws Exception {
-        Address shippingAddress = orderReq.getDeliveryAddress();
-        Address savedAddress = addressRepository.save(shippingAddress);
+        Address address = new Address();
+        address.setDeliveryAddress(orderReq.getAddressRequest().getDeliveryAddress());
+        address.setUser(user);
+        Address savedAddress = addressService.createAddress(address);
+
         if(!user.getAddresses().contains(savedAddress)){
             user.getAddresses().add(savedAddress);
         }

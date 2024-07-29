@@ -20,17 +20,20 @@ public class RestaurantServiceImp implements RestaurantService {
     @Autowired
     private RestaurantRepository restaurantRepository;
     @Autowired
-    private AddressRepository addressRepository;
+    private AddressService addressService;
     @Autowired
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public Restaurant createRestaurant(CreateRestaurantRequest req, User user) {
-        Address address = addressRepository.save(req.getAddress());
+    public Restaurant createRestaurant(CreateRestaurantRequest req, User user) throws Exception {
+        Address address = new Address();
+        address.setDeliveryAddress(req.getAddress().getDeliveryAddress());
+        address.setUser(user);
+        Address savedAddress = addressService.createAddress(address);
         Restaurant restaurant = new Restaurant();
-        restaurant.setAddress(req.getAddress());
+        restaurant.setAddress(savedAddress);
         restaurant.setContactInformation(req.getContactInformation());
         restaurant.setCuisineType(req.getCuisineType());
         restaurant.setName(req.getName());

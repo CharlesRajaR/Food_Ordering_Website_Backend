@@ -1,24 +1,24 @@
 package com.rcr.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private List<String> deliveryAddress;
+    private String name;
     @ManyToOne
-    @JsonIgnore
-    private User user;
-
+    private Restaurant restaurant;
+    @Column(length = 1000)
+    private String image;
+    private String location;
+    private String startedAt;
+    private String endedAt;
 }

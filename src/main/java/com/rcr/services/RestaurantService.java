@@ -8,7 +8,7 @@ import com.rcr.request.CreateRestaurantRequest;
 import java.util.List;
 
 public interface RestaurantService {
-    public Restaurant createRestaurant(CreateRestaurantRequest req, User user);
+    public Restaurant createRestaurant(CreateRestaurantRequest req, User user) throws Exception;
     public Restaurant updateRestaurant(Long restaurantId, CreateRestaurantRequest updateRestaurant) throws Exception;
     public void deleteRestaurant(Long restaurantId) throws Exception;
     public List<Restaurant> getAllRestaurant();
