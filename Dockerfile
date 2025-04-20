@@ -1,6 +1,10 @@
-FROM eclipse-temurin:21-jdk-jammy
+FROM openjdk:21-jdk-slim
 
-VOLUME /tmp
-ARG JAR_FILE=target/*.jar
+WORKDIR /app
 
-ENTRYPOINT["java", "-jar", "/app.jar"]
+COPY target/my-app.jar app.jar
+
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

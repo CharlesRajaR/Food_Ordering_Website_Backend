@@ -1,0 +1,4 @@
+
+*.war
+node_modules/
+.git
