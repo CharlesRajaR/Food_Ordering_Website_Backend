@@ -32,7 +32,6 @@ This is a full-stack food ordering application built using **Spring Boot** for t
 - Manage restaurant profile and working hours.
 
 ## 📸 Screenshots for the understanding of the restaurant owners
-_(Replace the placeholders below with actual screenshots)_
 
 ### 📍 HomePage
 ![Dashboard Screenshot](./images/customerhome.jpeg)
