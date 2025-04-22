@@ -3,6 +3,9 @@
 ## 📌 Project Overview
 This is a full-stack food ordering application built using **Spring Boot** for the backend and **React** for the frontend. The platform enables **restaurant owners** to manage orders, menus, and customer interactions efficiently and customers who can buy delicious foods by sitting in thier home.
 
+Visit the live website here:[Food Ordering Website](https://rcr-food.vercel.app)
+React code repository is here:[React code](https://github.com/CharlesRajaR/Food-Ordering-Website-Frontend)
+
 ## 🚀 Tech Stack
 - **Frontend:** React, Redux, Material-UI, Tailwindcss, Axios, Javascript
 - **Backend:** Spring Boot, Java, MySQL
